@@ -1,0 +1,21 @@
+library(shiny)
+library(datasets)
+## Interfaz gráfica
+shinyUI(
+    fluidPage(
+        titlePanel("Telephones by region"),
+        sidebarLayout(
+            ## Sidebar panel
+            sidebarPanel(
+                selectInput("region", "Region:",
+                            choices=colnames(WorldPhones)),
+                hr(),
+                helpText("Data from AT&T (1961) The World's Telephones.")
+                ),
+            ## Main Panel
+            mainPanel(
+                plotOutput("phonePlot")
+                )
+            )
+        )
+    )
